@@ -1,78 +1,22 @@
+// Import statements (DO NOT TOUCH THESE UNLESS YOU KNOW WHAT YOU'RE DOING!)
 import DialogueBox from "./engine/DialogueBox.js";
-import Character from "./engine/Character.js";
-import Vector2D from "./engine/Vector2D.js";
-import Mouse from "./engine/Mouse.js";
-import Level from "./engine/Level.js";
-import { Player, keySet } from "./engine/Player.js";
-import Camera from "./engine/Camera.js";
 
-const canvas = document.getElementById("gameCanvas");
-const ctx = canvas.getContext("2d");
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-ctx.imageSmoothingEnabled = false;
-
-window.addEventListener("resize", function(){
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-});
-
-const keysDown = {};
-
-window.addEventListener("keydown", (event) => {
-    keysDown[event.key.toLowerCase()] = true;
-});
-
-window.addEventListener("keyup", (event) => {
-    keysDown[event.key.toLowerCase()] = false;
-});
-
-let plr1 = new Player(
-    new Vector2D(500, 500), //position
-    "./assets/am-.gif", //image
-    new Vector2D(100, 100), //size
-    new keySet("w", "a", "s", "d", "e", "q") //keyset
-);
-
-let currentCam = new Camera(new Vector2D(0, 0), plr1);
-const lvl1 = new Level("./assets/level1.png", 64, [plr1], currentCam);
-
-const players = [
-    plr1
-];
-
-function stepPlayers(){
-    players.forEach((item) => {
-
-        if(keysDown[item.keys.up]){
-            item.velocity.y += item.speed;
-        }
-        if(keysDown[item.keys.down]){
-            item.velocity.y -= item.speed;
-        }
-        if(keysDown[item.keys.right]){
-            item.velocity.x += item.speed;
-        }
-        if(keysDown[item.keys.left]){
-            item.velocity.x -= item.speed;
-        }
-
-        item.velocity.x /= 1.5;
-        item.velocity.y /= 1.5;
-        item.position = item.position.add(item.velocity);
+// Start function - runs before the first frame
+function start() { 
+    // Put code to run on the first frame here!
+    new DialogueBox("Hello, world!", "white", "Tiny5", 20, () => {
+        new DialogueBox("Bye!", "yellow", "Tiny5", 20, () => {
+        
+        });
     });
 }
 
-let currentLevel = lvl1;
-
-function gameLoop() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    stepPlayers();
-    currentCam.stepEaseToSubject(10);
-    lvl1.render();
-    requestAnimationFrame(gameLoop);
+// Update function - runs every frame
+function update() {
+    // Put update code here!
+    requestAnimationFrame(update); //DO NOT REMOVE THIS LINE! it loops the update function
 }
 
-gameLoop();
-
-export {currentLevel};
+// Call the functions (DO NOT TOUCH)
+start();
+update();

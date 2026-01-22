@@ -1,0 +1,5 @@
+Hi!
+
+This is an "engine" for those Undertale-style boss battles where you fight in a turn-based manner. It runs on HTML5 and Javascript, so it's perfect for websites. If you don't know what I'm talking about, just search up "undertale boss fight". It's a really popular format!
+
+All you really need to touch is the Main function. Everything else is mostly provided in the engine code; however, feel free to mod the base engine to your needs!

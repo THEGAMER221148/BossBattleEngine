@@ -1,6 +1,7 @@
-export default class DialogueBox {
+export default class DialogueBox { // class for dialogue boxes
     constructor(text, color, font, delay, onRemove){
-        let box = document.createElement("div");
+        // Create HTML element
+        const box = document.createElement("div");
         box.style.position = "fixed";
         box.style.height = "30%";
         box.style.width = "90%";
@@ -13,17 +14,18 @@ export default class DialogueBox {
         box.style.borderColor = "white";
         box.style.marginLeft = "-10px";
         box.style.marginBottom = "-10px";
+        box.style.paddingLeft = "10px";
         box.style.fontSize = "4vh";
         box.style.fontFamily = font;
         document.body.append(box);
         this.box = box;
-
-        let listenerFunction = function(event){
+        // function to run when a key is pressed
+        const listenerFunction = function(event){
             console.log(event.key.toLowerCase());
             if(event.key.toLowerCase() == "enter"){
                 window.removeEventListener("keypress", listenerFunction);
 
-                let up = function(event){
+                const up = function(event){
                     if(event.key.toLowerCase() == "enter"){
                         window.removeEventListener("keyup", up);
                         document.body.removeChild(box);
@@ -39,7 +41,7 @@ export default class DialogueBox {
         };
 
         window.addEventListener("keypress", listenerFunction);
-        
+        // function to show the text
         function speak(dialogue){
             if(dialogue.length > 0){
                 box.innerHTML += dialogue.charAt(0);
