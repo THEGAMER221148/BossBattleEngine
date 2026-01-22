@@ -1,5 +1,5 @@
 export default class DialogueBox { // class for dialogue boxes
-    constructor(text, color, font, delay, onRemove){
+    constructor(text, textOption1, textOption2, color, font, delay, defaultOption, Option2){
         // Create HTML element
         const box = document.createElement("div");
         box.style.position = "fixed";
@@ -22,14 +22,14 @@ export default class DialogueBox { // class for dialogue boxes
         // function to run when a key is pressed
         const listenerFunction = function(event){
             console.log(event.key.toLowerCase());
-            if(event.key.toLowerCase() == "enter"){
+            if(event.key.toLowerCase() == "e"){
                 window.removeEventListener("keypress", listenerFunction);
 
                 const up = function(event){
-                    if(event.key.toLowerCase() == "enter"){
+                    if(event.key.toLowerCase() == "e"){
                         window.removeEventListener("keyup", up);
                         document.body.removeChild(box);
-                        if(typeof onRemove == "function"){onRemove()};
+                        if(typeof defaultOption == "function"){defaultOption()};
                     }
                 }
 
