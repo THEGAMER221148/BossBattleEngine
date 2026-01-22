@@ -1,12 +1,12 @@
 export default class DialogueBox { // class for dialogue boxes
-    constructor(text, textOption1, textOption2, color, font, delay, defaultOption, Option2){
+    constructor(text, textOption1, textOption2, color, font, delay, defaultOption, option2){
         // Create HTML element
         const box = document.createElement("div");
+        let option1TextBox;
+        let option2TextBox;
         box.style.position = "fixed";
-        box.style.height = "30%";
         box.style.width = "90%";
         box.style.left = "5%";
-        box.style.bottom = "5%";
         box.style.color = color;
         box.style.backgroundColor = "black";
         box.style.borderWidth = "10px";
@@ -17,26 +17,48 @@ export default class DialogueBox { // class for dialogue boxes
         box.style.paddingLeft = "10px";
         box.style.fontSize = "4vh";
         box.style.fontFamily = font;
-        document.body.append(box);
+        if (textOption1 == undefined) {
+            box.style.height =  "30%";
+            box.style.bottom = "5%";
+            document.body.append(box);
+        } else {
+            box.style.height =  "25%";
+            box.style.bottom = "10%";
+            document.body.append(box);
+
+            option1TextBox = box.cloneNode();
+            option1TextBox.style.height = "5%";
+            option1TextBox.style.bottom = "5%";
+            option1TextBox.style.width = "45%";
+            option1TextBox.innerHTML = "[Q] " + textOption1;
+            option1TextBox.style.color = "rgb(255, 255, 0)";
+            box.append(option1TextBox);
+
+            option2TextBox = option1TextBox.cloneNode();
+            option2TextBox.style.left = "50%";
+            option2TextBox.innerHTML = "[E] " + textOption2;
+            option2TextBox.style.color = "rgb(255, 255, 0)";
+            box.append(option2TextBox);
+        }
         this.box = box;
         // function to run when a key is pressed
         const listenerFunction = function(event){
             console.log(event.key.toLowerCase());
-            if(event.key.toLowerCase() == "e"){
+
+            if(event.key.toLowerCase() == "e"){ // advance / option 2
+
                 window.removeEventListener("keypress", listenerFunction);
 
-                const up = function(event){
-                    if(event.key.toLowerCase() == "e"){
-                        window.removeEventListener("keyup", up);
-                        document.body.removeChild(box);
-                        if(typeof defaultOption == "function"){defaultOption()};
-                    }
-                }
-
-                window.addEventListener("keyup", up);
-            }else if(event.key.toLowerCase() == "q"){
-                window.removeEventListener("keypress", listenerFunction);
                 document.body.removeChild(box);
+                if(typeof option2 == "function"){option2()};
+
+            }else if(event.key.toLowerCase() == "q"){ // option 1
+
+                window.removeEventListener("keypress", listenerFunction);
+
+                document.body.removeChild(box);
+                if(typeof defaultOption == "function"){defaultOption()};
+
             }
         };
 
