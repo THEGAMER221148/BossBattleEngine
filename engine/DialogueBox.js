@@ -55,8 +55,7 @@ export default class DialogueBox { // class for dialogue boxes
                 window.removeEventListener("keypress", listenerFunction);
 
                 document.body.removeChild(box);
-                if(typeof option2 == "function"){option2()}
-                else if(typeof defaultOption == "function"){defaultOption()};
+                if(typeof option2 == "function"){option2()}else if(typeof defaultOption == "function"){defaultOption()};
 
             }else if(event.key.toLowerCase() == "q"){ // option 1
 
