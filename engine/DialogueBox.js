@@ -1,10 +1,11 @@
+import GLOBAL_FONT from "../main.js";
 export default class DialogueBox { // class for dialogue boxes
 
     deleteBox() {
         this.box.remove();
     }
 
-    constructor(text, textOption1, textOption2, color, font, delay, defaultOption, option2){
+    constructor(text, textOption1, textOption2, color, delay, defaultOption, option2){
         // Create HTML element
         const box = document.createElement("div");
         let option1TextBox;
@@ -21,7 +22,7 @@ export default class DialogueBox { // class for dialogue boxes
         box.style.marginBottom = "-10px";
         box.style.paddingLeft = "10px";
         box.style.fontSize = "4vh";
-        box.style.fontFamily = font;
+        box.style.fontFamily = GLOBAL_FONT;
         if (textOption1 == undefined) {
             box.style.height =  "30%";
             box.style.bottom = "5%";
