@@ -7,5 +7,7 @@ new DialogueBox("Hello, world!", "ok", "I don't accept", "white", "Tiny5", 20, (
         new Ending("Ending 1", "Yay u made it to the end!");
     });
 }, () => {
-    new DialogueBox("You don't want to see me angrey...", undefined, undefined, "red", "Tiny5", 20);
+    new DialogueBox("You don't want to see me angrey...", undefined, undefined, "red", "Tiny5", 20, () => {
+        new Ending("Bad Ending", "You ended bad. bad. You get this ending by, like, pressing the second (bad ofc) option ofc (ofc).");
+    });
 });
