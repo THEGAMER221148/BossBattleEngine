@@ -1,4 +1,9 @@
 export default class DialogueBox { // class for dialogue boxes
+
+    deleteBox() {
+        this.box.remove();
+    }
+
     constructor(text, textOption1, textOption2, color, font, delay, defaultOption, option2){
         // Create HTML element
         const box = document.createElement("div");
@@ -50,7 +55,8 @@ export default class DialogueBox { // class for dialogue boxes
                 window.removeEventListener("keypress", listenerFunction);
 
                 document.body.removeChild(box);
-                if(typeof option2 == "function"){option2()};
+                if(typeof option2 == "function"){option2()}
+                else if(typeof defaultOption == "function"){defaultOption()};
 
             }else if(event.key.toLowerCase() == "q"){ // option 1
 
@@ -62,7 +68,6 @@ export default class DialogueBox { // class for dialogue boxes
             }
         };
 
-        window.addEventListener("keypress", listenerFunction);
         // function to show the text
         function speak(dialogue){
             if(dialogue.length > 0){
@@ -75,5 +80,8 @@ export default class DialogueBox { // class for dialogue boxes
         }
 
         speak(text);
+        setTimeout(() => { // Adds a delay to the dialogue advancing
+            window.addEventListener("keypress", listenerFunction);
+        }, 250);
     }
 }
