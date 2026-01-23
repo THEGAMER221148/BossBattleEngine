@@ -1,8 +1,11 @@
 // Import statements (DO NOT TOUCH THESE UNLESS YOU KNOW WHAT YOU'RE DOING!)
 import DialogueBox from "./engine/DialogueBox.js";
 import Ending from "./engine/Ending.js";
-const GLOBAL_FONT = "Tiny5"
-export default GLOBAL_FONT; // This is the font name that will be used for everything. Import a font into "index.html" and change this name to change the font for dialogue and endings.
+import setCanvasSize from "./engine/CanvasHandler.js";
+const GLOBAL_FONT = "Tiny5"; // This is the font name that will be used for everything. Import a font into "index.html" and change this name to change the font for dialogue and endings.
+export default GLOBAL_FONT;
+setCanvasSize(240, 180); // This sets the resolution of the canvas, the main part of the screen where sprites show up.
+
 // Put initialization stuff (charcter definitions, etc.) here!
 
 // These dialogue boxes will be where most of the action happens.
