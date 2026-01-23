@@ -9,7 +9,7 @@ new DialogueBox("I was just playing zero build with my friends and I wanted to a
 new DialogueBox("Do you like Fortnite?", "Yes", "No", "white", "Tiny5", 20, () => {
     // Option 1 (u like Fortnite)
     new DialogueBox("That's awesome!", undefined, undefined, "white", "Tiny5", 20, () => {
-    new DialogueBox("Do you want to join my squad?", "Yes!", "No", "white", "Tiny5", 20, () => {
+    new DialogueBox("Do you want to join my squad?", "Yes!", "Not really...", "white", "Tiny5", 20, () => {
         // Option 1-1: You want to join his squad
         new DialogueBox("Great! I'll be on my Xbox at 5 P.M. See you there!", undefined, undefined, "white", "Tiny5", 20, () => {
             new Ending("Good Ending", "You've built a stronger friendship with Fortnite Kid.");
