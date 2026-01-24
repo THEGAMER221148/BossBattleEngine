@@ -1,5 +1,6 @@
 // This is just code to control the canvas. It sets the size and position of it.
 const canvas = document.getElementById("gameCanvas");
+canvas.background = undefined;
 
 function resize() {
     if(window.innerWidth / window.innerHeight < canvas.width / canvas.height){
@@ -11,13 +12,20 @@ function resize() {
     }
 }
 
-export default function setCanvasSize(width, height) {
+function setBackground(imageSource) {
+    const img = new Image()
+    img.src = imageSource;
+    canvas.background = img;
+}
+
+function setCanvasSize(width, height) {
     canvas.width = width;
     canvas.height = height;
-    canvas.getContext("2d").fillRect(0, 0, canvas.width, canvas.height);
     resize();
 }
 
 // Listen for the resize function
 window.addEventListener("resize", resize);
 resize();
+
+export {setBackground, setCanvasSize}
