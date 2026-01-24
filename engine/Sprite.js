@@ -8,9 +8,12 @@ export default class Sprite {
 
     static renderAll() { // Render all the sprites
         if (canvas.background === undefined) {
-            ctx.clearRect(0, 0, 99999999, 99999999);
-        } else {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        } else if (typeof canvas.background == "Image") {
             ctx.drawImage(canvas.background, 0, 0, canvas.width, canvas.height);
+        } else {
+            ctx.fillStyle = canvas.background;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
         }
         for (const sprite of Sprite.allSprites) {
             if (sprite.visible) {

@@ -1,8 +1,9 @@
 // Import statements (DO NOT TOUCH THESE UNLESS YOU KNOW WHAT YOU'RE DOING!)
 import DialogueBox from "./engine/DialogueBox.js";
 import Ending from "./engine/Ending.js";
-import {setCanvasSize, setBackground} from "./engine/CanvasHandler.js";
+import {setCanvasSize, setBackgroundImage, setBackgroundColor, canvas, ctx} from "./engine/CanvasHandler.js";
 import Sprite from "./engine/Sprite.js";
+import * as Utils from "./engine/Utils.js";
 
 const GLOBAL_FONT = "Tiny5"; // This is the font name that will be used for everything. Import a font into "index.html" and change this name to change the font for dialogue and endings.
 export default GLOBAL_FONT;
@@ -23,6 +24,14 @@ new DialogueBox("Check out an ending, or advance to a boss fight:", "See ending"
     // Option 2: See battle
     new DialogueBox("Alright then, let's see how this works:", undefined, undefined, "lime", 20, () => {
         // Start battle
+        async function battle() {
+            let value = 0;
+            while (value < 100) {
+                setBackgroundColor(`rgb(${value}, ${value}, ${value})`);
+                value += 1;
+                await Utils.wait(20);
+            }
+        }
     });
 
 });
