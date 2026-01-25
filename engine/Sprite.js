@@ -1,4 +1,4 @@
-const canvas = document.getElementById("gameCanvas");
+const canvas = document.getElementById("spriteCanvas");
 const ctx = canvas.getContext("2d");
 
 export default class Sprite {
@@ -7,14 +7,7 @@ export default class Sprite {
     static lastTime = Date.now();
 
     static renderAll() { // Render all the sprites
-        if (canvas.background === undefined) {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-        } else if (typeof canvas.background == "Image") {
-            ctx.drawImage(canvas.background, 0, 0, canvas.width, canvas.height);
-        } else {
-            ctx.fillStyle = canvas.background;
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-        }
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
         for (const sprite of Sprite.allSprites) {
             if (sprite.visible) {
                 ctx.save();

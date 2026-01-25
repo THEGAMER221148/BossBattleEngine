@@ -1,7 +1,7 @@
 // This is just code to control the canvas. It sets the size and position of it.
 const canvas = document.getElementById("gameCanvas");
+const spriteCanvas = document.getElementById("spriteCanvas");
 const ctx = canvas.getContext("2d");
-canvas.background = undefined;
 
 function resize() {
     if(window.innerWidth / window.innerHeight < canvas.width / canvas.height){
@@ -11,21 +11,15 @@ function resize() {
         canvas.style.height = '100%';
         canvas.style.width = window.innerHeight * (canvas.width / canvas.height) + "px";
     }
-}
-
-function setBackgroundImage(imageSource) {
-    const img = new Image()
-    img.src = imageSource;
-    canvas.background = img;
-}
-
-function setBackgroundColor (col) {
-    canvas.background = col;
+    spriteCanvas.style.width = canvas.style.width;
+    spriteCanvas.style.height = canvas.style.height;
 }
 
 function setCanvasSize(width, height) {
     canvas.width = width;
     canvas.height = height;
+    spriteCanvas.width = canvas.width;
+    spriteCanvas.height = canvas.height;
     resize();
 }
 
@@ -33,4 +27,4 @@ function setCanvasSize(width, height) {
 window.addEventListener("resize", resize);
 resize();
 
-export {setBackgroundImage, setBackgroundColor, setCanvasSize, canvas, ctx}
+export {setCanvasSize, canvas, ctx}

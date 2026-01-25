@@ -5,7 +5,7 @@ export default class DialogueBox { // class for dialogue boxes
         this.box.remove();
     }
 
-    constructor(text, textOption1, textOption2, color, delay, defaultOption, option2){
+    constructor(text, textOption1, textOption2, color, delay, voice, defaultOption, option2){
         // Create HTML element
         const box = document.createElement("div");
         let option1TextBox;
@@ -69,8 +69,10 @@ export default class DialogueBox { // class for dialogue boxes
         };
 
         // function to show the text
+        const voiceSound = new Audio(voice);
         function speak(dialogue){
             if(dialogue.length > 0){
+                new Audio(voice).play();
                 box.innerHTML += dialogue.charAt(0);
                 dialogue = dialogue.substring(1, dialogue.length);
                 setTimeout(() => {
