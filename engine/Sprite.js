@@ -1,5 +1,6 @@
 const canvas = document.getElementById("spriteCanvas");
 const ctx = canvas.getContext("2d");
+ctx.imageSmoothingEnabled = false;
 
 export default class Sprite {
 
@@ -11,7 +12,7 @@ export default class Sprite {
         for (const sprite of Sprite.allSprites) {
             if (sprite.visible) {
                 ctx.save();
-                ctx.translate(sprite.x, sprite.y);
+                ctx.translate(Math.floor(sprite.x), Math.floor(sprite.y));
                 ctx.rotate(sprite.dir);
                 ctx.drawImage(sprite.images[sprite.currentImage], -sprite.width / 2, -sprite.height / 2, sprite.width, sprite.height);
                 ctx.restore();

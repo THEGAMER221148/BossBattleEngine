@@ -23,6 +23,7 @@ export default class DialogueBox { // class for dialogue boxes
         box.style.paddingLeft = "10px";
         box.style.fontSize = "4vh";
         box.style.fontFamily = GLOBAL_FONT;
+        box.style.zIndex = "999";
         if (textOption1 == undefined) {
             box.style.height =  "30%";
             box.style.bottom = "5%";

@@ -10,6 +10,7 @@
             body {
                 margin: 0%;
                 background-color: rgb(0, 0, 0);
+                overflow: hidden;
             }
             .tiny5-regular {
                 font-family: "Tiny5", sans-serif;
@@ -21,7 +22,7 @@
                 height: 100%;
                 image-rendering: pixelated;
                 z-index: 0;
-                position: fixed;
+                position: absolute;
                 left: 50%;
                 top: 50%;
                 transform: translate(-50%, -50%);
@@ -29,9 +30,9 @@
             #spriteCanvas {
                 width: 100%;
                 height: 100%;
-                image-rendering: pixelated;
+                image-rendering: crisp-edges;
                 z-index: 1;
-                position: fixed;
+                position: absolute;
                 left: 50%;
                 top: 50%;
                 transform: translate(-50%, -50%);

@@ -2,6 +2,8 @@
 const canvas = document.getElementById("gameCanvas");
 const spriteCanvas = document.getElementById("spriteCanvas");
 const ctx = canvas.getContext("2d");
+ctx.imageSmoothingEnabled = false;
+document.getElementById("spriteCanvas").getContext("2d").imageSmoothingEnabled = false;
 
 function resize() {
     if(window.innerWidth / window.innerHeight < canvas.width / canvas.height){
@@ -11,15 +13,19 @@ function resize() {
         canvas.style.height = '100%';
         canvas.style.width = window.innerHeight * (canvas.width / canvas.height) + "px";
     }
-    spriteCanvas.style.width = canvas.style.width;
-    spriteCanvas.style.height = canvas.style.height;
+    for (const v of document.body.getElementsByTagName("canvas")) {
+        v.style.width = canvas.style.width;
+        v.style.height = canvas.style.height;
+    }
 }
 
 function setCanvasSize(width, height) {
     canvas.width = width;
     canvas.height = height;
-    spriteCanvas.width = canvas.width;
-    spriteCanvas.height = canvas.height;
+    for (const v of document.body.getElementsByTagName("canvas")) {
+        v.width = canvas.width;
+        v.height = canvas.height;
+    }
     resize();
 }
 
