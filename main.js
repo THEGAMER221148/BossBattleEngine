@@ -52,8 +52,8 @@ new DialogueBox("Check out an ending, or advance to a boss fight:", "See ending"
         new DialogueBox("Look, it's not my fault I was drawn with only 64 pixels, okay? Some people are just low-quality, ya' know.", undefined, undefined, "white", 20, voice1, async () => {
         await Utils.wait(1000);
         new DialogueBox("alright can we get some music going?", undefined, undefined, "white", 20, voice1, async () => {
-        //await new Audio("./sounds/omniscient message.wav").play();
-        //await Utils.wait(11000);
+        await new Audio("./sounds/omniscient message.wav").play();
+        await Utils.wait(11000);
         new DialogueBox("Wow omniscient observer, you're lame.", undefined, undefined, "white", 20, voice1, () => {
         new DialogueBox("Ok who am I kidding I'm just gonna start attacking you now.", undefined, undefined, "red", 20, voice1, () => {
         attackBox.visible = true;
