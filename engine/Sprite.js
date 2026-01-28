@@ -41,7 +41,7 @@ export default class Sprite {
             img.src = this.images[i];
             this.images[i] = img;
         }
-
+        ctx.imageSmoothingEnabled = false;
         Sprite.allSprites.push(this);
         console.log(Sprite.allSprites);
     }

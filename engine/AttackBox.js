@@ -1,6 +1,6 @@
 import * as Utils from "./Utils.js";
 export default class AttackBox {
-    constructor(x, y, width, height, playerImage, playerSpeed, playerScale) {
+    constructor(x, y, width, height, playerImage, playerSpeed, playerScale, dangerousSprites) {
         this.x = x;
         this.y = y;
         this.width = width;
@@ -20,6 +20,7 @@ export default class AttackBox {
         document.body.appendChild(this.element);
 
         const ctx = this.element.getContext("2d");
+        ctx.imageSmoothingEnabled = false;
         const edgeWidth = 4;
         ctx.lineWidth = edgeWidth;
         ctx.strokeStyle = "white";
@@ -44,16 +45,16 @@ export default class AttackBox {
                     this.plrX += this.plrSpeed * (Date.now() - lastTime);
                 }
                 // x-collision
-                if (this.plrX > this.width / 2 + this.x - ((this.plrImg.width * this.plrScale) / 2)) {
-                    this.plrX = this.width / 2 + this.x - ((this.plrImg.width * this.plrScale) / 2);
-                } else if (this.plrX < this.x - this.width / 2 + ((this.plrImg.width * this.plrScale) / 2)) {
-                    this.plrX = this.x - this.width / 2 + ((this.plrImg.width * this.plrScale) / 2);
+                if (this.plrX > this.width / 2 + this.x - ((this.plrImg.width * this.plrScale) / 2) - edgeWidth / 2) {
+                    this.plrX = this.width / 2 + this.x - ((this.plrImg.width * this.plrScale) / 2) - edgeWidth / 2;
+                } else if (this.plrX < this.x - this.width / 2 + ((this.plrImg.width * this.plrScale) / 2) + edgeWidth / 2) {
+                    this.plrX = this.x - this.width / 2 + ((this.plrImg.width * this.plrScale) / 2) + edgeWidth / 2;
                 }
                 // y-collision
-                if (this.plrY > this.height / 2 + this.y - ((this.plrImg.width * this.plrScale) / 2)) {
-                    this.plrY = this.height / 2 + this.y - ((this.plrImg.width * this.plrScale) / 2);
-                } else if (this.plrY < this.y - this.height / 2 + ((this.plrImg.width * this.plrScale) / 2)) {
-                    this.plrY = this.y - this.height / 2 + ((this.plrImg.width * this.plrScale) / 2);
+                if (this.plrY > this.height / 2 + this.y - ((this.plrImg.width * this.plrScale) / 2) - edgeWidth / 2) {
+                    this.plrY = this.height / 2 + this.y - ((this.plrImg.width * this.plrScale) / 2) - edgeWidth / 2;
+                } else if (this.plrY < this.y - this.height / 2 + ((this.plrImg.width * this.plrScale) / 2) + edgeWidth / 2) {
+                    this.plrY = this.y - this.height / 2 + ((this.plrImg.width * this.plrScale) / 2) + edgeWidth / 2;
                 }
             }
             lastTime = Date.now();
